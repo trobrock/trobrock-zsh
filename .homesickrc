@@ -1,4 +1,10 @@
 #!/usr/bin/env ruby
 
-puts "Running install script"
-puts Dir.pwd
+oh_my_zsh_custom = Pathname.new("oh-my-zsh-custom")
+home_path        = home_dir.join(".oh-my-zsh").join("custom")
+
+Dir.chdir oh_my_zsh_custom.expand_path do
+  Pathname.glob "*" do |path|
+    ln_s path.expand_path, home_path.join(path).expand_path
+  end
+end
