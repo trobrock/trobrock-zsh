@@ -47,5 +47,5 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.localrc
 export EDITOR=$(which vim)
 
-export PATH=./.bin:/usr/local/mysql/bin:$PATH
+export PATH=./.bin:$HOME/bin:/usr/local/mysql/bin:$PATH
 typeset -U PATH
