@@ -7,4 +7,7 @@ Dir.chdir oh_my_zsh_custom.expand_path do
   Pathname.glob "*/*" do |path|
     ln_s path.expand_path, home_path.join(path).expand_path
   end
+  Pathname.glob "*" do |path|
+    ln_s path.expand_path, home_path.join(path).expand_path if path.file?
+  end
 end
