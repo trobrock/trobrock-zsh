@@ -49,3 +49,5 @@ export EDITOR=$(which vim)
 
 export PATH=./.bin:$HOME/bin:/usr/local/mysql/bin:$PATH
 typeset -U PATH
+
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
