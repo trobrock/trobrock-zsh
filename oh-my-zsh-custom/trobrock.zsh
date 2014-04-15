@@ -24,3 +24,9 @@ function gbisect() {
   git bisect good $good ;
   git bisect run ~/git-bisect.sh ;
 }
+
+function explain()
+{
+  cmd=$@
+  open http://explainshell.com/explain\?cmd\=$(perl -e "use URI::Escape; print uri_escape('$cmd');")
+}
