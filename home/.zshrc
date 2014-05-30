@@ -43,8 +43,6 @@ plugins=(brew rbenv git c github vundle zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-
-source $HOME/.localrc
 export EDITOR=$(which vim)
 
 export PATH=./.bin:$HOME/bin:/usr/local/mysql/bin:$PATH
