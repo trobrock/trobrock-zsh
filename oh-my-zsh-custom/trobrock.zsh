@@ -14,7 +14,11 @@ alias gf='git fetch -p'
 alias clean='find ./**/*.orig | xargs rm'
 
 alias b='bundle install'
+alias pi='pod repo update && pod install'
 alias fs='foreman start'
+alias migrate='bundle exec rake db:migrate:reset db:seed_fu'
+alias ip='curl http://ipv4.icanhazip.com'
+alias whitelist='aws ec2 replace-network-acl-entry --network-acl-id acl-14d76071 --rule-number 118 --protocol 6 --rule-action allow --ingress --cidr-block "$(ip)/32" --port-range From=22,To=22'
 
 function gbisect() {
   good=$1
@@ -29,4 +33,27 @@ function explain()
 {
   cmd=$@
   open http://explainshell.com/explain\?cmd\=$(perl -e "use URI::Escape; print uri_escape('$cmd');")
+}
+
+function dock()
+{
+  dockstatus="$(docker-machine status)"
+  if [ "$dockstatus" != "Running" ]; then
+    docker-machine start
+  fi
+  eval "$(docker-machine env)"
+}
+
+function undock()
+{
+  dockstatus="$(docker-machine status)"
+  if [[ "$dockstatus" == "Running" ]]; then
+    docker-machine stop
+  fi
+}
+
+function biotrack_version()
+{
+  url="$(curl -Ls -o /dev/null -w %{url_effective} http://biotrackthc.com/api/xml)"
+  echo ${${url##*-}%.pdf}
 }

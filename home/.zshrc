@@ -46,9 +46,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=$(which vim)
 
 export PATH=./bin:./.bin:$HOME/bin:/usr/local/mysql/bin:$PATH
+export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
 typeset -U PATH
 
-export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home)
