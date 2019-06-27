@@ -1,11 +1,13 @@
-# Put brew stuff first
 export ANDROID_HOME=~/Library/Android/sdk
-export PATH=/usr/local/bin:$PATH:$ANDROID_HOME/tools
-export SPARK_HOME="$(brew --prefix apache-spark)/libexec"
-export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/build:$PYTHONPATH
+export PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/local/sbin:$PATH:$ANDROID_HOME/tools
+
+export LIBRARY_PATH="/usr/local/opt/openssl/lib:$LIBRARY_PATH"
 
 ulimit -n 2048
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-eval "$($HOME/.chefvm/bin/chefvm init -)"
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+
 eval "$(hub alias -s)"
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+eval "$(direnv hook zsh)"

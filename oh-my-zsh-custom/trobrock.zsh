@@ -1,24 +1,28 @@
 alias reload='exec $SHELL -l'
-alias vrc='vim ~/.vimrc'
-alias zrc='vim ~/.zshrc'
+alias vrc='$EDITOR ~/.vimrc'
+alias zrc='$EDITOR ~/.zshrc'
+alias zrcc='$EDITOR ~/.oh-my-zsh/custom/trobrock.zsh'
 
 alias gdc='git diff --cached'
 alias gm='git merge --no-ff'
 alias gmff='git merge'
 alias gaa='git add -A'
 alias gpq='git pull-request'
-alias gld="gl | grep Updating | cut -d ' ' -f2 | xargs git diff"
 alias gm='git merge --no-ff'
 alias gmff='git merge'
 alias gf='git fetch -p'
+alias grand='git log --color --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit | grep -ve "Merge pull request" -e "Merge branch" | gshuf -n 1'
 alias clean='find ./**/*.orig | xargs rm'
 
 alias b='bundle install'
 alias pi='pod repo update && pod install'
-alias fs='foreman start'
-alias migrate='bundle exec rake db:migrate:reset db:seed_fu'
+alias migrate='SKIP_PUSHER=1 bundle exec rake db:migrate:reset db:seed_fu'
 alias ip='curl http://ipv4.icanhazip.com'
-alias whitelist='aws ec2 replace-network-acl-entry --network-acl-id acl-14d76071 --rule-number 118 --protocol 6 --rule-action allow --ingress --cidr-block "$(ip)/32" --port-range From=22,To=22'
+alias yaml2js="python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)'"
+
+alias vim=nvim
+
+alias verify_copy="find . \\( -name '*.MP4' -o -name '*.MOV' -o -name '*.RW2' \\) -exec md5 -q {} \\; | sort | md5"
 
 function gbisect() {
   good=$1
@@ -33,27 +37,4 @@ function explain()
 {
   cmd=$@
   open http://explainshell.com/explain\?cmd\=$(perl -e "use URI::Escape; print uri_escape('$cmd');")
-}
-
-function dock()
-{
-  dockstatus="$(docker-machine status)"
-  if [ "$dockstatus" != "Running" ]; then
-    docker-machine start
-  fi
-  eval "$(docker-machine env)"
-}
-
-function undock()
-{
-  dockstatus="$(docker-machine status)"
-  if [[ "$dockstatus" == "Running" ]]; then
-    docker-machine stop
-  fi
-}
-
-function biotrack_version()
-{
-  url="$(curl -Ls -o /dev/null -w %{url_effective} http://biotrackthc.com/api/xml)"
-  echo ${${url##*-}%.pdf}
 }
