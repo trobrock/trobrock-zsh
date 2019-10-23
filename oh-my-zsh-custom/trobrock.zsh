@@ -20,6 +20,8 @@ alias migrate='SKIP_PUSHER=1 bundle exec rake db:migrate:reset db:seed_fu'
 alias ip='curl http://ipv4.icanhazip.com'
 alias yaml2js="python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)'"
 
+alias vpn="sudo route change default -interface en8 && sudo route add -host github.secureserver.net -interface gpd0"
+
 alias vim=nvim
 
 alias verify_copy="find . \\( -name '*.MP4' -o -name '*.MOV' -o -name '*.RW2' \\) -exec md5 -q {} \\; | sort | md5"

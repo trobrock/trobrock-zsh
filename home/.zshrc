@@ -42,8 +42,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export EDITOR=$(which nvim)
 
-export PATH=./bin:./.bin:$HOME/bin:/usr/local/mysql/bin:$PATH
-export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
+export PATH=./bin:./.bin:$HOME/bin:/usr/local/opt/python/libexec/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
 typeset -U PATH
 
 export JAVA_HOME=$(/usr/libexec/java_home)
