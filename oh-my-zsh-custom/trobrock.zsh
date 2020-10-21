@@ -4,6 +4,7 @@ alias zrc='$EDITOR ~/.zshrc'
 alias zrcc='$EDITOR ~/.oh-my-zsh/custom/trobrock.zsh'
 
 export THOR_MERGE="opendiff"
+export AWS_PAGER=""
 
 alias gdc='git diff --cached'
 alias gm='git merge --no-ff'
@@ -24,6 +25,7 @@ alias yaml2js="python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin)
 alias ds="docker-sync start --foreground"
 alias dc="docker-compose"
 alias cov="open coverage/index.html"
+alias fs="foreman start"
 
 alias vpn="sudo route change default -interface en0 && sudo route add -host github.secureserver.net -interface gpd0 && sudo route add -host artifactory.secureserver.net -interface gpd0"
 
