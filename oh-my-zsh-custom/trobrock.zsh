@@ -4,6 +4,7 @@ alias zrc='$EDITOR ~/.zshrc'
 alias zrcc='$EDITOR ~/.oh-my-zsh/custom/trobrock.zsh'
 
 export THOR_MERGE="opendiff"
+export AWS_PAGER=""
 
 alias gdc='git diff --cached'
 alias gm='git merge --no-ff'
@@ -16,6 +17,9 @@ alias gf='git fetch -p'
 alias grand='git log --color --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit | grep -ve "Merge pull request" -e "Merge branch" | gshuf -n 1'
 alias gbc='git branch --merged | grep -v master | xargs git branch -d'
 alias clean='find ./**/*.orig | xargs rm'
+
+alias ghpr='gh pr create -r akatz1 --fill'
+alias ghm='gh pr merge -m -d ; gl'
 
 alias b='bundle install'
 alias pi='pod repo update && pod install'
