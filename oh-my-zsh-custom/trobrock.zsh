@@ -28,6 +28,7 @@ alias yaml2js="python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin)
 alias ds="docker-sync start --foreground"
 alias dc="docker-compose"
 alias cov="open coverage/index.html"
+alias fs="foreman start"
 
 alias vpn="sudo route change default -interface en0 && sudo route add -host github.secureserver.net -interface gpd0 && sudo route add -host artifactory.secureserver.net -interface gpd0"
 
