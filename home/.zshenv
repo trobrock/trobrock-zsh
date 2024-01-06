@@ -14,3 +14,8 @@ if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
 eval "$(hub alias -s)"
 eval "$(direnv hook zsh)"
+
+export PATH=./bin:./.bin:$HOME/bin:/usr/local/opt/python/libexec/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
+typeset -U PATH
+
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

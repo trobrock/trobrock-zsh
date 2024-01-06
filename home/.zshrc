@@ -40,13 +40,7 @@ plugins=(brew rbenv git c github zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export EDITOR=$(which nvim)
+export EDITOR="$(which code) -w"
 
-export PATH=./bin:./.bin:$HOME/bin:/usr/local/opt/python/libexec/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
+export PATH=./bin:$HOME/bin:/usr/local/opt/python/libexec/bin:/usr/local/heroku/bin:/usr/local/mysql/bin:$PATH
 typeset -U PATH
-
-export JAVA_HOME=$(/usr/libexec/java_home)
-
-if [[ "$TERM" != "scree"* ]] && [[ "$SSH_CONNECTION" == "" ]]; then
-  wemux
-fi

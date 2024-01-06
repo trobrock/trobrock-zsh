@@ -29,6 +29,7 @@ alias ds="docker-sync start --foreground"
 alias dc="docker-compose"
 alias cov="open coverage/index.html"
 alias fs="foreman start"
+alias h="heroku"
 
 alias vpn="sudo route change default -interface en0 && sudo route add -host github.secureserver.net -interface gpd0 && sudo route add -host artifactory.secureserver.net -interface gpd0"
 
@@ -47,4 +48,40 @@ function explain()
 {
   cmd=$@
   open http://explainshell.com/explain\?cmd\=$(perl -e "use URI::Escape; print uri_escape('$cmd');")
+}
+
+function podcast() {
+  ffmpeg -i ./*.mp3 \
+    -b:a 128k \
+    -metadata title="$2" \
+    -metadata author="Trae Robrock & Justin Gabriel" \
+    -metadata year="$(date +'%Y')" \
+    -metadata track="$1" \
+    -metadata show="The Financial Illiterates" \
+    -metadata episode_id="$1" \
+    ep$1.mp3
+}
+
+function video() {
+  pushd ~/Documents/Current\ Projects
+  cp -R "/users/trobrock/Google Drive/Content/Premiere Pro Templates/YouTube - Regular" "/Users/trobrock/Documents/Current Projects/$1"
+  pushd "$1"
+
+  mv ~/Movies/Material* ./Footage/
+  open .
+
+  popd
+  popd
+}
+
+short() {
+  pushd ~/Documents/Current\ Projects
+  cp -R "/users/trobrock/Google Drive/Content/Premiere Pro Templates/YouTube - Shorts" "/Users/trobrock/Documents/Current Projects/$1"
+  pushd "$1"
+
+  mv ~/Movies/Material* ./Footage/
+  open .
+
+  popd
+  popd
 }
